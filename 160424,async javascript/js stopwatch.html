@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stopwatch</title>
+    <style>
+        div{display: flex;margin-left: 700px;}
+        span{margin-left: 20px;}
+        #minute{display: none;}
+                
+        #hour{display: none;}
+        #start{margin-left: 700px;}
+        
+    </style>
+</head>
+<body>
+
+<div>
+<h1><span id="hour">00</span></h1>
+
+<h1><span id="minute">00</span></h1>
+
+<h1><span id="seconds">00</span></h1>
+
+<h1><span id="milliseconds">00</span></h1>
+</div>
+
+
+    <button id="start">start</button>
+    <button id="pause">pause</button>
+    <button id="reset">reset</button>
+</body>
+</html>
+
+<script>
+
+let start=document.getElementById("start")
+let pause=document.getElementById("pause")
+let reset=document.getElementById("reset")
+let milli=document.getElementById("milliseconds")
+let sec=document.getElementById("seconds")
+let min=document.getElementById("minute")
+let hours=document.getElementById("hour")
+
+let milliseconds=0
+let seconds=0
+let minutes=0
+let hour=0
+let id;
+start.addEventListener("click",handleclick)
+
+
+
+
+function handleclick(){
+
+
+id=setInterval(function(){
+milliseconds++
+let checkone=milliseconds%100
+if(checkone==0){
+   seconds++ 
+}
+
+else if(seconds==60){
+    seconds=0
+    minutes++
+    min.style.display="inline-block"
+}
+
+else if(minutes==60){
+    minutes=0
+hour++
+hours.style.display="inline-block"
+}
+
+
+milli.innerText=checkone
+sec.innerText=seconds
+min.innerText=minutes
+hours.innerText=hour
+},10)
+
+
+}
+
+
+
+
+
+pause.addEventListener("click",handlepause)
+function handlepause(){
+
+    clearInterval(id)
+}
+
+
+reset.addEventListener("click",handlereset)
+
+function handlereset(){
+milli.innerText="00"
+sec.innerText="00"
+clearInterval(id)
+
+}
+</script>

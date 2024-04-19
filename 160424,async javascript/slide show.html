@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slide show</title>
+    <style>
+
+        div{height: 300px;width: 400px;margin-left: 700px;}
+        div>img{width: 100%;height: 100%;}
+        #startslide{margin-top: 50px;margin-left:700px ;}
+        button{margin-left: 170px;}
+        #previous{margin-left: 700px;}
+        #previous,#next{margin-top: 50px;}
+        #next{margin-left: 230px;}
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <button id="startslide">start slide show</button>
+    <button id="stopslide">stop slide show</button><br>
+    <button id="previous">previous</button>
+    <button id="next">next</button>
+</body>
+</html>
+
+<script>
+let array=[
+"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/w/3/4/-original-imahyytukhkky5ew.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/h/d/-original-imags487gaqqhcea.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/n/i/w/-original-imagzk4mfg6zf2fv.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/312/312/kzzw5u80/mobile/a/4/c/-original-imagbvp7gkarybsg.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/sock/c/j/f/free-5-swg-365-51-swagr-original-imaggn9w7bzaw5sa.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/a/t/i/s-mhs-601-yellow-metronaut-original-imagzhqvhrzhes4r.jpeg?q=70",
+
+"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/o/6/m/s-sshort-01-marmic-fab-original-imagzphuetyjgssh.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/w/o/4/xl-ask-004-ausk-original-imagqajzsgjnfe6t.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/s/w/d/l-blackcheck-whitecheck-youth-first-original-imaghy7kx93whnar.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/vest/y/k/a/s-2-jc22-2pck-ls-blk-grn-gymfit-jump-cuts-original-imagqkgaz7avhsuv.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/t/l/h/xl-191-combraided-original-imagxvytnhpye4zv.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/c/u/z/m-oversizetsrt-101-kajaru-original-imagwgzcp2jmkzyt.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/shirt/e/4/w/3xl-lstr-bt-green-grey-vtexx-original-imagnyewgpgf2gqx.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/kl5hh8w0/bandana/t/s/0/na-freesize-202fc-freecultr-na-original-imagychrcjkvbweb.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/kzn17680/shirt/f/o/e/m-logo-shirt-infinity-choice-original-imagbhwf3pxhpuef.jpeg?q=70",
+"https://rukminim2.flixcart.com/image/612/612/xif0q/sock/l/e/o/free-socks-m-d4-brucella-original-imagwtfzfbgcncay.jpeg?q=70"
+
+]
+let start=document.getElementById("startslide")
+let stop=document.getElementById("stopslide")
+let container=document.getElementById("container")
+
+let previous=document.getElementById("previous")
+let next=document.getElementById("next")
+start.addEventListener("click",handleslide)
+stop.addEventListener("click",handlestop)
+
+let img=document.createElement("img")
+img.src=array[0]
+container.append(img)
+
+let image=0
+let id;
+
+
+function handleslide(){
+
+    id=setInterval(()=>{
+image++
+if(image==array.length-1){
+    image=0
+}
+else{
+img.src=array[image]
+}
+},1000)
+
+}
+
+
+
+function handlestop(){
+
+
+clearInterval(id)
+
+
+
+}
+
+previous.addEventListener("click",handleprevious)
+
+function handleprevious(){
+
+image--
+clearInterval(id)
+if(image<1){
+ image=0
+   image.src=array[image] 
+   
+}
+else{
+img.src=array[image]}
+
+}
+next.addEventListener("click",handlenext)
+
+
+function handlenext(){
+
+image++
+img.src=array[image]
+
+}
+</script>
+
+
+
+
+
+
+
+
+
+

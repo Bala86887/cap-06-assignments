@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js timer</title>
+    <style>
+
+        div{display: flex;margin-left: 650px;}
+        h1{margin-left: 20px;}
+        button{height: 40px;}
+        #start{margin-left: 650px;}
+    </style>
+</head>
+<body>
+<div>
+<h1><span id="minutes">5</span></h1>
+<h1><span id="seconds">00</span></h1>
+</div>
+
+    <button id="start">start</button>
+    <button id="pause">pause</button>
+    <button id="reset">reset</button>
+</body>
+</html>
+<script>
+let a=document.getElementById("minutes")
+let b=document.getElementById("seconds")
+
+
+let start=document.getElementById("start")
+let pause=document.getElementById("pause")
+let reset=document.getElementById("reset")
+
+
+
+let id;
+
+
+
+
+let   seconds=300
+
+start.addEventListener("click",handlestart)
+
+
+function handlestart(){
+
+    id=setInterval(()=>{
+seconds--
+let check=seconds%60
+let check2=Math.floor(seconds/60)
+b.innerText=check
+
+a.innerText=check2
+},1000)
+
+
+
+}
+
+pause.addEventListener("click",handlepause)
+
+function handlepause(){
+clearInterval(id)
+}
+
+
+
+reset.addEventListener("click",handlereset)
+function handlereset(){
+a.innerText=0
+b.innerText=0
+clearInterval(id)
+
+}
+</script>
