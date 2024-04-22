@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching and Displaying Users from Reqres AP</title>
+
+    <style>
+#container{display: grid;grid-template-columns: repeat(3,1fr);
+grid-template-rows: repeat(auto,auto);
+
+width: 80%;
+margin: auto;
+gap: 20px;
+}
+#container>div{box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;text-align: center;}
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+let container=document.getElementById("container")
+let fetchdata=fetch("https://reqres.in/api/users?page=2")
+.then((one)=>{
+return one.json()
+
+})
+
+.then((two)=>{
+let getdata=two.data
+
+
+showdata(getdata)
+
+})
+
+
+
+function showdata(array){
+array.map((elements)=>{
+console.log(elements)
+    let div=document.createElement("div")
+let para1=document.createElement("p")
+let para2=document.createElement("p")
+let para3=document.createElement("p")
+let img=document.createElement("img")
+img.src=elements.avatar
+
+para1.innerText=elements.first_name
+para2.innerText=elements.last_name
+para3.innerText=elements.email
+div.append(img,para1,para2,para3)
+
+
+
+
+
+container.append(div)
+
+
+
+})
+
+
+
+
+}
+</script>

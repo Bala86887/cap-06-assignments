@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+
+        #container{display: grid;grid-template-columns: repeat(3,1fr);
+grid-template-rows: repeat(auto,auto);
+
+width: 80%;
+margin: auto;
+gap: 20px;
+}
+#container>div{box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;text-align: center;}
+
+
+    </style>
+</head>
+<body>
+  
+<div id="container"></div>
+</body>
+</html>
+
+<script>
+    let container=document.getElementById("container")
+let btn=document.getElementById("button")
+let fetchdata=fetch(" https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-countries")
+
+.then(function(one){
+    return one.json()
+})
+
+.then(function(two){
+    let getdata=two.data
+    showdata(getdata)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+
+
+function showdata(array){
+array.map((elements)=>{
+
+    let div=document.createElement("div")
+let para1=document.createElement("p")
+let para2=document.createElement("p")
+let para3=document.createElement("p")
+
+
+
+para1.innerText=elements.country
+para2.innerText=elements.Rank
+para3.innerText=elements.population
+div.append(para1,para2,para3)
+
+
+
+
+
+container.append(div)
+
+
+
+})
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
